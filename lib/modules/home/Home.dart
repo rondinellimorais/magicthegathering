@@ -1,8 +1,11 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:magic_gathering/components/Background.dart';
+import 'package:magic_gathering/components/Footer.dart';
+import 'package:magic_gathering/components/Header.dart';
+import 'package:magic_gathering/components/MagicCarousel.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -42,94 +45,23 @@ class HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xFFFC4A1A), Color(0xFFF7B733)],
-          ),
-        ),
-        child: SafeArea(
-          child: Stack(
+      body: Background(
+        colors: [Color(0xFFFC4A1A), Color(0xFFF7B733)],
+        pageBottomImage: Image.asset('assets/forest.png'),
+        children: [
+          Column(
             children: [
-              Positioned(
-                bottom: 0,
-                child: Container(
-                  child: Image.asset('assets/forest.png'),
+              Header(
+                rightButton: FlatButton(
+                  child: Image.asset("assets/camera.png"),
+                  onPressed: startUnityActivity,
                 ),
               ),
-              Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.only(left: 30, top: 30),
-                        child: Text(
-                          "Magic\nthe Gathering",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 32,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.only(top: 15),
-                        child: FlatButton(
-                          child: Image.asset("assets/camera.png"),
-                          onPressed: startUnityActivity,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Expanded(
-                    child: CarouselSlider(
-                      options: CarouselOptions(
-                        aspectRatio: 1.0,
-                        enlargeCenterPage: true,
-                        enableInfiniteScroll: false,
-                        viewportFraction: 0.74,
-                      ),
-                      items: imgList
-                          .map(
-                            (item) => Container(
-                              decoration: BoxDecoration(
-                                /**
-                                 * Coloquei a imagem no box decorator pois aqui
-                                 * eu consigo eliminar as pontas brancas da imagem
-                                 * utilizando técnicas de overflow
-                                 */
-                                borderRadius: BorderRadius.circular(11.0),
-                                image: DecorationImage(
-                                  image: NetworkImage(item),
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(bottom: 30, top: 30),
-                    child: Center(
-                      child: Text(
-                        "By Rondinelli Morais",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              MagicCarousel(images: imgList),
+              Footer(),
             ],
           ),
-        ),
+        ],
       ),
     );
   }
