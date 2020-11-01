@@ -6,6 +6,8 @@ import 'package:magic_gathering/components/Background.dart';
 import 'package:magic_gathering/components/Footer.dart';
 import 'package:magic_gathering/components/Header.dart';
 import 'package:magic_gathering/components/MagicCarousel.dart';
+import 'package:magic_gathering/model/MagicCard.dart';
+import 'package:magic_gathering/services/MagicCardService.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);
@@ -16,27 +18,31 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
   static const platform = const MethodChannel('magicgathering/bridge');
-  final List<String> imgList = [
-    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147651&type=card',
-    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=149554&type=card',
-    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147653&type=card',
-    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147652&type=card',
-    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147649&type=card',
-    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147647&type=card',
-    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147646&type=card',
-    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147641&type=card',
-  ];
+  List<String> _imgList = List<String>();
 
   @override
   void initState() {
     super.initState();
+    loadMagicCards();
+  }
+
+  void loadMagicCards() async {
+    List<MagicCard> cards = await new MagicCardService().cards();
+    List<String> imgList = List<String>();
+    for (var card in cards) {
+      if (card.imageUrl != null) {
+        imgList.add(card.imageUrl);
+      }
+    }
+
+    setState(() {
+      _imgList = imgList;
+    });
   }
 
   void startUnityActivity() {
     if (defaultTargetPlatform == TargetPlatform.iOS) {}
 
-    print("veio aqui");
-    print(defaultTargetPlatform);
     if (defaultTargetPlatform == TargetPlatform.android) {
       platform.invokeMethod('startUnityActivity');
     }
@@ -57,7 +63,7 @@ class HomeState extends State<Home> {
                   onPressed: startUnityActivity,
                 ),
               ),
-              MagicCarousel(images: imgList),
+              MagicCarousel(images: _imgList),
               Footer(),
             ],
           ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:magic_gathering/modules/home/Home.dart';
+import 'package:magic_gathering/modules/Home.dart';
 
 void main() {
   runApp(App());
