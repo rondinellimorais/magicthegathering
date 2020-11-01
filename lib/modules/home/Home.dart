@@ -1,6 +1,6 @@
-import 'dart:developer';
-
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 
 class Home extends StatefulWidget {
@@ -12,6 +12,16 @@ class Home extends StatefulWidget {
 
 class HomeState extends State<Home> {
   static const platform = const MethodChannel('magicgathering/bridge');
+  final List<String> imgList = [
+    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147651&type=card',
+    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=149554&type=card',
+    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147653&type=card',
+    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147652&type=card',
+    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147649&type=card',
+    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147647&type=card',
+    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147646&type=card',
+    'https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid=147641&type=card',
+  ];
 
   @override
   void initState() {
@@ -55,9 +65,21 @@ class HomeState extends State<Home> {
                     ),
                   ),
                   Expanded(
-                    child: Center(
-                      child:
-                          Text("aqui vai um texto gigante para entender o q"),
+                    child: CarouselSlider(
+                      options: CarouselOptions(
+                        aspectRatio: 1.0,
+                        enlargeCenterPage: true,
+                        enlargeStrategy: CenterPageEnlargeStrategy.height,
+                        enableInfiniteScroll: false,
+                        viewportFraction: 0.74,
+                      ),
+                      items: imgList
+                          .map(
+                            (item) => Container(
+                              child: Image.network(item, fit: BoxFit.cover),
+                            ),
+                          )
+                          .toList(),
                     ),
                   ),
                   Container(
