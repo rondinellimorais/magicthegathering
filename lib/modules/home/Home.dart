@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
@@ -29,7 +30,13 @@ class HomeState extends State<Home> {
   }
 
   void startUnityActivity() {
-    platform.invokeMethod('startUnityActivity');
+    if (defaultTargetPlatform == TargetPlatform.iOS) {}
+
+    print("veio aqui");
+    print(defaultTargetPlatform);
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      platform.invokeMethod('startUnityActivity');
+    }
   }
 
   @override
@@ -54,15 +61,28 @@ class HomeState extends State<Home> {
               ),
               Column(
                 children: [
-                  Container(
-                    child: Text(
-                      "Magic the Gathering",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        padding: EdgeInsets.only(left: 30, top: 30),
+                        child: Text(
+                          "Magic\nthe Gathering",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 32,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
                       ),
-                    ),
+                      Container(
+                        padding: EdgeInsets.only(top: 15),
+                        child: FlatButton(
+                          child: Image.asset("assets/camera.png"),
+                          onPressed: startUnityActivity,
+                        ),
+                      ),
+                    ],
                   ),
                   Expanded(
                     child: CarouselSlider(
