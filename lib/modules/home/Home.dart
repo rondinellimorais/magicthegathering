@@ -69,14 +69,24 @@ class HomeState extends State<Home> {
                       options: CarouselOptions(
                         aspectRatio: 1.0,
                         enlargeCenterPage: true,
-                        enlargeStrategy: CenterPageEnlargeStrategy.height,
                         enableInfiniteScroll: false,
                         viewportFraction: 0.74,
                       ),
                       items: imgList
                           .map(
                             (item) => Container(
-                              child: Image.network(item, fit: BoxFit.cover),
+                              decoration: BoxDecoration(
+                                /**
+                                 * Coloquei a imagem no box decorator pois aqui
+                                 * eu consigo eliminar as pontas brancas da imagem
+                                 * utilizando técnicas de overflow
+                                 */
+                                borderRadius: BorderRadius.circular(11.0),
+                                image: DecorationImage(
+                                  image: NetworkImage(item),
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
                             ),
                           )
                           .toList(),
