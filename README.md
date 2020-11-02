@@ -13,8 +13,6 @@
     <td style="padding-left: 8px">
       <img alt="AR Kit" src="https://www.viewar.com/media/2019/12/logo_arkit.png" height="100">
     </td>
-  </tr>
-  <tr>
     <td style="padding-left: 25px"><img alt="Vuforia"
         src="https://www.techprior.com/wp-content/uploads/2017/12/Vuforia-Logo-OLx2a896.png" height="50"></td>
     <td><img alt="AR Core"
