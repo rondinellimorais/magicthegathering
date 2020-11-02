@@ -18,7 +18,7 @@ class MagicCarousel extends StatelessWidget {
         aspectRatio: 1.0,
         enlargeCenterPage: true,
         enableInfiniteScroll: false,
-        viewportFraction: 0.74,
+        viewportFraction: 0.72,
       ),
       items: magicCards(),
     );

@@ -7,13 +7,13 @@ class MagicCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /**
+     * Coloquei a imagem no box decorator pois aqui
+     * eu consigo eliminar as pontas brancas da imagem
+     * utilizando técnicas de overflow
+     */
     return Container(
       decoration: BoxDecoration(
-        /**
-         * Coloquei a imagem no box decorator pois aqui
-         * eu consigo eliminar as pontas brancas da imagem
-         * utilizando técnicas de overflow
-         */
         borderRadius: BorderRadius.circular(11.0),
         image: DecorationImage(
           image: NetworkImage(this.url),
