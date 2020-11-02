@@ -23,6 +23,7 @@ class Background extends StatelessWidget {
         ),
       ),
       child: SafeArea(
+        bottom: false,
         child: Stack(
           children: [
             Positioned(
