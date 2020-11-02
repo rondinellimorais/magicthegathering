@@ -10,8 +10,10 @@
         src="https://flutter.dev/assets/flutter-lockup-1caf6476beed76adec3c477586da54de6b552b2f42108ec5bc68dc63bae2df75.png"
         width="129" height="37">
     </td>
-    <td style="padding-left: 8px">
-      <img alt="AR Kit" src="https://www.viewar.com/media/2019/12/logo_arkit.png" height="100">
+    <td>
+      <img alt="Unity 3D"
+        src="https://unity3d.com/profiles/unity3d/themes/unity/images/pages/branding_trademarks/unity-masterbrand-black.png"
+        height="100">
     </td>
     <td style="padding-left: 25px"><img alt="Vuforia"
         src="https://www.techprior.com/wp-content/uploads/2017/12/Vuforia-Logo-OLx2a896.png" height="50"></td>
@@ -20,10 +22,8 @@
         height="100"></td>
   </tr>
   <tr>
-    <td>
-      <img alt="Unity 3D"
-        src="https://unity3d.com/profiles/unity3d/themes/unity/images/pages/branding_trademarks/unity-masterbrand-black.png"
-        height="100">
+    <td style="padding-left: 8px">
+      <img alt="AR Kit" src="https://www.viewar.com/media/2019/12/logo_arkit.png" height="100">
     </td>
     <td style="padding-left: 10px">
       <img alt="Adobe XD"
