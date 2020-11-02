@@ -1,15 +1,39 @@
 # Desafio Flutter
 
-## links
-
-- https://everisbrasil.medium.com/como-integrar-realidade-aumentada-a-aplicativos-android-nativos-gustavo-giardi-47d0bdfc66bd
-- https://www.youtube.com/watch?v=MtiUx_szKbI
-- https://www.youtube.com/watch?v=ElmzIq6stNI&t=455s
-- https://en.wikipedia.org/wiki/Magic:_The_Gathering
-- https://www.the-qrcode-generator.com/
-- https://www.youtube.com/watch?v=0IBitpV7kmk&t=1056s
-
 ## Tecnologias
+
+<!-- logos das tecnologias utilizadas -->
+<table border="0" width="100%">
+  <tr>
+    <td style="padding-left: 25px">
+      <img alt="Flutter"
+        src="https://flutter.dev/assets/flutter-lockup-1caf6476beed76adec3c477586da54de6b552b2f42108ec5bc68dc63bae2df75.png"
+        width="129" height="37">
+    </td>
+    <td style="padding-left: 8px">
+      <img alt="AR Kit" src="https://www.viewar.com/media/2019/12/logo_arkit.png" height="100">
+    </td>
+  </tr>
+  <tr>
+    <td style="padding-left: 25px"><img alt="Vuforia"
+        src="https://www.techprior.com/wp-content/uploads/2017/12/Vuforia-Logo-OLx2a896.png" height="50"></td>
+    <td><img alt="AR Core"
+        src="https://i2.wp.com/noticiasetecnologia.com/wp-content/uploads/2019/02/Google-ARCore.jpg?fit=1000%2C533&ssl=1"
+        height="100"></td>
+  </tr>
+  <tr>
+    <td>
+      <img alt="Unity 3D"
+        src="https://unity3d.com/profiles/unity3d/themes/unity/images/pages/branding_trademarks/unity-masterbrand-black.png"
+        height="100">
+    </td>
+    <td style="padding-left: 10px">
+      <img alt="Adobe XD"
+        src="https://s3.amazonaws.com/quiin/vendors/logos/000/010/584/original/Adobe_XD_lockup_one_line_black_text_%281%29.png?1587896798"
+        height="45">
+    </td>
+  </tr>
+</table>
 
 - Flutter
 - Unity
@@ -67,3 +91,12 @@
 4. README
 5. Enviar tudo para o git 🍺
 6. 👊 🔥 🎉
+
+## links
+
+- https://everisbrasil.medium.com/como-integrar-realidade-aumentada-a-aplicativos-android-nativos-gustavo-giardi-47d0bdfc66bd
+- https://www.youtube.com/watch?v=MtiUx_szKbI
+- https://www.youtube.com/watch?v=ElmzIq6stNI&t=455s
+- https://en.wikipedia.org/wiki/Magic:_The_Gathering
+- https://www.the-qrcode-generator.com/
+- https://www.youtube.com/watch?v=0IBitpV7kmk&t=1056s
