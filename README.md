@@ -42,9 +42,11 @@
       </a>
     </td>
     <td style="padding-left: 10px">
-      <img alt="Adobe XD"
-        src="https://s3.amazonaws.com/quiin/vendors/logos/000/010/584/original/Adobe_XD_lockup_one_line_black_text_%281%29.png?1587896798"
-        height="45">
+      <a href="https://www.adobe.com/br/products/xd.html">
+        <img alt="Adobe XD"
+          src="https://s3.amazonaws.com/quiin/vendors/logos/000/010/584/original/Adobe_XD_lockup_one_line_black_text_%281%29.png?1587896798"
+          height="45">
+      </a>
     </td>
   </tr>
 </table>
