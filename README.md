@@ -104,7 +104,11 @@
 
 ## Resultado final 📱 📷
 
-Adicionar vídeo aqui...
+[![Magic the Gathering Android](http://img.youtube.com/vi/mN44jWAkpvo/0.jpg)](https://www.youtube.com/embed/mN44jWAkpvo "Magic the Gathering Android")
+
+<figure class="video_container">
+  <iframe src="https://drive.google.com/file/d/0B6m34D8cFdpMZndKTlBRU0tmczg/preview" frameborder="0" allowfullscreen="true"> </iframe>
+</figure>
 
 ## links
 
