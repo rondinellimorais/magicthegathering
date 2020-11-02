@@ -6,6 +6,7 @@ import 'package:magic_gathering/components/Background.dart';
 import 'package:magic_gathering/components/Footer.dart';
 import 'package:magic_gathering/components/Header.dart';
 import 'package:magic_gathering/components/MagicCarousel.dart';
+import 'package:magic_gathering/components/ProgressAlertDialog.dart';
 import 'package:magic_gathering/model/MagicCard.dart';
 import 'package:magic_gathering/services/MagicCardService.dart';
 
@@ -19,7 +20,9 @@ class Home extends StatefulWidget {
 class HomeState extends State<Home> {
   static const platform = const MethodChannel('magicgathering/bridge');
   List<String> _imgList = List<String>();
+  List<String> _cardsBase64Image = List<String>();
   List<MagicCard> cards;
+  ProgressAlertDialog progressAlertDialog;
 
   @override
   void initState() {
@@ -30,10 +33,12 @@ class HomeState extends State<Home> {
   void loadMagicCards() async {
     cards = await new MagicCardService().cards();
     List<String> imgList = List<String>();
-    for (var card in cards) {
-      if (card.imageUrl != null) {
-        imgList.add(card.imageUrl);
-      }
+
+    print(cards.length);
+
+    for (var card
+        in cards.where((element) => element.imageUrl != null).toList()) {
+      imgList.add(card.imageUrl);
     }
 
     setState(() {
@@ -41,19 +46,44 @@ class HomeState extends State<Home> {
     });
   }
 
+  void prepareImageAssets() async {
+    if (_cardsBase64Image.isEmpty) {
+      progressAlertDialog = new ProgressAlertDialog();
+      showDialog(
+        context: context,
+        builder: (BuildContext context) => progressAlertDialog,
+      );
+      await cardsBase64Image();
+    }
+    startUnityActivity();
+  }
+
   void startUnityActivity() async {
-    if (defaultTargetPlatform == TargetPlatform.iOS) {}
+    print('abriu a activity');
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      // disponível apenas para android sorry :(
+    }
 
     if (defaultTargetPlatform == TargetPlatform.android) {
-      List<String> cardsBase64Image = List<String>();
-      for (var card in cards) {
-        if (card.imageUrl != null) {
-          cardsBase64Image.add(await card.toBase64());
-        }
-      }
-      platform.invokeMethod('startUnityActivity', cardsBase64Image);
+      platform.invokeMethod('startUnityActivity');
     }
   }
+
+  Future<void> cardsBase64Image() async {
+    var filteredCards =
+        cards.where((element) => element.imageUrl != null).toList();
+    for (var card in filteredCards) {
+      _cardsBase64Image.add(await card.toBase64());
+      progressAlertDialog.updatePercentProgress(
+        percentProgress(_cardsBase64Image.length, filteredCards.length),
+      );
+    }
+
+    // dismiss modal
+    Navigator.pop(context);
+  }
+
+  double percentProgress(int currentLength, int total) => currentLength / total;
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +97,7 @@ class HomeState extends State<Home> {
               Header(
                 rightButton: FlatButton(
                   child: Image.asset("assets/camera.png"),
-                  onPressed: startUnityActivity,
+                  onPressed: prepareImageAssets,
                 ),
               ),
               MagicCarousel(images: _imgList),
