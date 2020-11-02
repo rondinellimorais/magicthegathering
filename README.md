@@ -86,6 +86,10 @@
 5. Enviar tudo para o git 🍺
 6. 👊 🔥 🎉
 
+## Resultado final 📱 📷
+
+Adicionar vídeo aqui...
+
 ## links
 
 - https://everisbrasil.medium.com/como-integrar-realidade-aumentada-a-aplicativos-android-nativos-gustavo-giardi-47d0bdfc66bd
