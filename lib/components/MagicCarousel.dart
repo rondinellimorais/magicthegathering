@@ -5,8 +5,13 @@ import 'package:magic_gathering/components/MagicCard.dart';
 
 class MagicCarousel extends StatelessWidget {
   final List<String> images;
+  final Function(int index) onPageChanged;
 
-  MagicCarousel({Key key, this.images}) : super(key: key);
+  MagicCarousel({
+    Key key,
+    this.images,
+    this.onPageChanged,
+  }) : super(key: key);
 
   List<MagicCard> magicCards() {
     return images.map((url) => MagicCard(url: url)).toList();
@@ -19,6 +24,9 @@ class MagicCarousel extends StatelessWidget {
         enlargeCenterPage: true,
         enableInfiniteScroll: false,
         viewportFraction: 0.72,
+        onPageChanged: (index, reason) {
+          this.onPageChanged(index);
+        },
       ),
       items: magicCards(),
     );

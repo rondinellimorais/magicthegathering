@@ -24,6 +24,8 @@ class HomeState extends State<Home> {
   List<String> _cardsBase64Image = List<String>();
   List<MagicCard> cards;
   ProgressAlertDialog progressAlertDialog;
+  int currentIndex = 0;
+  String inViewPortBase64;
 
   @override
   void initState() {
@@ -32,30 +34,35 @@ class HomeState extends State<Home> {
   }
 
   void loadMagicCards() async {
-    cards = await new MagicCardService().cards();
-    List<String> imgList = List<String>();
+    try {
+      cards = await new MagicCardService().cards();
+      List<String> imgList = List<String>();
 
-    for (var card
-        in cards.where((element) => element.imageUrl != null).toList()) {
-      imgList.add(card.imageUrl);
+      for (var card
+          in cards.where((element) => element.imageUrl != null).toList()) {
+        imgList.add(card.imageUrl);
+      }
+
+      setState(() {
+        _imgList = imgList;
+      });
+    } catch (e) {
+      throw e;
     }
-
-    setState(() {
-      _imgList = imgList;
-    });
   }
 
   Future<void> cardsBase64Image() async {
     var filteredCards =
         cards.where((element) => element.imageUrl != null).toList();
+
+    inViewPortBase64 = await filteredCards[currentIndex].toBase64();
+
     for (var card in filteredCards) {
       _cardsBase64Image.add(await card.toBase64());
       progressAlertDialog.updatePercentProgress(
         percentProgress(_cardsBase64Image.length, filteredCards.length),
       );
     }
-
-    // dismiss modal
     Navigator.pop(context);
   }
 
@@ -75,7 +82,16 @@ class HomeState extends State<Home> {
   }
 
   void startUnityActivity() async {
-    platform.invokeMethod('startUnityActivity');
+    /**
+     * OBS: Vou limitar a lista a 4 itens pois esses base64
+     * execede o limite de informações que podem ser enviadas
+     * via putExtra na intent
+     */
+    Map<String, dynamic> parameters = {
+      'cardBase64Image': inViewPortBase64,
+      'cardsBase64Image': _cardsBase64Image.sublist(1, 5)
+    };
+    platform.invokeMethod('startUnityActivity', parameters);
   }
 
   void openUnityScene() {
@@ -88,7 +104,8 @@ class HomeState extends State<Home> {
         context: context,
         builder: (BuildContext context) {
           return CupertinoAlertDialog(
-            title: Text("Disponível apenas para Android sorry 😭"),
+            title: Text(
+                "Realidade aumentada disponível apenas para Android sorry 😭"),
             actions: [
               CupertinoDialogAction(
                 child: Text(
@@ -159,7 +176,12 @@ class HomeState extends State<Home> {
                   onPressed: openUnityScene,
                 ),
               ),
-              MagicCarousel(images: _imgList),
+              MagicCarousel(
+                images: _imgList,
+                onPageChanged: (index) {
+                  currentIndex = index;
+                },
+              ),
               Footer(),
             ],
           ),
