@@ -3,27 +3,43 @@
 ## Tecnologias
 
 <!-- logos das tecnologias utilizadas -->
+
+
 <table border="0" width="100%">
   <tr>
     <td style="padding-left: 25px">
+      <a href="https://flutter.dev/">
       <img alt="Flutter"
         src="https://flutter.dev/assets/flutter-lockup-1caf6476beed76adec3c477586da54de6b552b2f42108ec5bc68dc63bae2df75.png"
         width="129" height="37">
+      </a>
     </td>
     <td>
+      <a href="https://unity3d.com">
       <img alt="Unity 3D"
         src="https://unity3d.com/profiles/unity3d/themes/unity/images/pages/branding_trademarks/unity-masterbrand-black.png"
         height="100">
+      </a>
     </td>
-    <td style="padding-left: 25px"><img alt="Vuforia"
-        src="https://www.techprior.com/wp-content/uploads/2017/12/Vuforia-Logo-OLx2a896.png" height="50"></td>
-    <td><img alt="AR Core"
+    <td style="padding-left: 25px">
+      <a href="https://developer.vuforia.com/">
+      <img alt="Vuforia"
+        src="https://www.techprior.com/wp-content/uploads/2017/12/Vuforia-Logo-OLx2a896.png" height="50">
+      </a>
+    </td>
+    <td>
+      <a href="https://developers.google.com/ar">
+      <img alt="AR Core"
         src="https://i2.wp.com/noticiasetecnologia.com/wp-content/uploads/2019/02/Google-ARCore.jpg?fit=1000%2C533&ssl=1"
-        height="100"></td>
+        height="100">
+      </a>
+    </td>
   </tr>
   <tr>
     <td style="padding-left: 8px">
+      <a href="https://developer.apple.com/augmented-reality/arkit/">
       <img alt="AR Kit" src="https://www.viewar.com/media/2019/12/logo_arkit.png" height="100">
+      </a>
     </td>
     <td style="padding-left: 10px">
       <img alt="Adobe XD"
