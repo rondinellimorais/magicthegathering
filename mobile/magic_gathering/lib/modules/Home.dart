@@ -52,8 +52,15 @@ class HomeState extends State<Home> {
   }
 
   Future<void> cardsBase64Image() async {
-    var filteredCards =
-        cards.where((element) => element.imageUrl != null).toList();
+    /**
+     * OBS: Vou limitar a lista a 4 itens pois esses base64
+     * execede o limite de informações que podem ser enviadas
+     * via putExtra na intent
+     */
+    var filteredCards = cards
+        .where((element) => element.imageUrl != null)
+        .toList()
+        .sublist(1, 5);
 
     inViewPortBase64 = await filteredCards[currentIndex].toBase64();
 
@@ -82,14 +89,9 @@ class HomeState extends State<Home> {
   }
 
   void startUnityActivity() async {
-    /**
-     * OBS: Vou limitar a lista a 4 itens pois esses base64
-     * execede o limite de informações que podem ser enviadas
-     * via putExtra na intent
-     */
     Map<String, dynamic> parameters = {
       'cardBase64Image': inViewPortBase64,
-      'cardsBase64Image': _cardsBase64Image.sublist(1, 5)
+      'cardsBase64Image': _cardsBase64Image
     };
     platform.invokeMethod('startUnityActivity', parameters);
   }
