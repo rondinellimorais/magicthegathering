@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -34,8 +35,6 @@ class HomeState extends State<Home> {
     cards = await new MagicCardService().cards();
     List<String> imgList = List<String>();
 
-    print(cards.length);
-
     for (var card
         in cards.where((element) => element.imageUrl != null).toList()) {
       imgList.add(card.imageUrl);
@@ -44,28 +43,6 @@ class HomeState extends State<Home> {
     setState(() {
       _imgList = imgList;
     });
-  }
-
-  void prepareImageAssets() async {
-    if (_cardsBase64Image.isEmpty) {
-      progressAlertDialog = new ProgressAlertDialog();
-      showDialog(
-        context: context,
-        builder: (BuildContext context) => progressAlertDialog,
-      );
-      await cardsBase64Image();
-    }
-    startUnityActivity();
-  }
-
-  void startUnityActivity() async {
-    if (defaultTargetPlatform == TargetPlatform.iOS) {
-      // disponível apenas para android sorry :(
-    }
-
-    if (defaultTargetPlatform == TargetPlatform.android) {
-      platform.invokeMethod('startUnityActivity');
-    }
   }
 
   Future<void> cardsBase64Image() async {
@@ -84,6 +61,89 @@ class HomeState extends State<Home> {
 
   double percentProgress(int currentLength, int total) => currentLength / total;
 
+  void prepareImageAssets() async {
+    if (_cardsBase64Image.isEmpty) {
+      progressAlertDialog = new ProgressAlertDialog();
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) => progressAlertDialog,
+      );
+      await cardsBase64Image();
+    }
+    startUnityActivity();
+  }
+
+  void startUnityActivity() async {
+    platform.invokeMethod('startUnityActivity');
+  }
+
+  void openUnityScene() {
+    if (_imgList.isEmpty) {
+      return;
+    }
+
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return CupertinoAlertDialog(
+            title: Text("Disponível apenas para Android sorry 😭"),
+            actions: [
+              CupertinoDialogAction(
+                child: Text(
+                  "Fechar",
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+
+    if (defaultTargetPlatform == TargetPlatform.android) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Você quer uma experiência com realidade aumentada ?"),
+            content: Text(
+                "Tenha em mão os qr codes, de preferência... literalmente 😊"),
+            actions: [
+              FlatButton(
+                child: Text(
+                  "Sim",
+                  style: TextStyle(fontSize: 16),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                  prepareImageAssets();
+                },
+              ),
+              FlatButton(
+                child: Text(
+                  "Não",
+                  style: TextStyle(fontSize: 16, color: Colors.redAccent[700]),
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          );
+        },
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +156,7 @@ class HomeState extends State<Home> {
               Header(
                 rightButton: FlatButton(
                   child: Image.asset("assets/camera.png"),
-                  onPressed: prepareImageAssets,
+                  onPressed: openUnityScene,
                 ),
               ),
               MagicCarousel(images: _imgList),
