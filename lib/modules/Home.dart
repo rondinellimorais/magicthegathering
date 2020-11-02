@@ -59,7 +59,6 @@ class HomeState extends State<Home> {
   }
 
   void startUnityActivity() async {
-    print('abriu a activity');
     if (defaultTargetPlatform == TargetPlatform.iOS) {
       // disponível apenas para android sorry :(
     }
