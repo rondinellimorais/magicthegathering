@@ -19,6 +19,7 @@ class Home extends StatefulWidget {
 class HomeState extends State<Home> {
   static const platform = const MethodChannel('magicgathering/bridge');
   List<String> _imgList = List<String>();
+  List<MagicCard> cards;
 
   @override
   void initState() {
@@ -27,7 +28,7 @@ class HomeState extends State<Home> {
   }
 
   void loadMagicCards() async {
-    List<MagicCard> cards = await new MagicCardService().cards();
+    cards = await new MagicCardService().cards();
     List<String> imgList = List<String>();
     for (var card in cards) {
       if (card.imageUrl != null) {
@@ -40,11 +41,17 @@ class HomeState extends State<Home> {
     });
   }
 
-  void startUnityActivity() {
+  void startUnityActivity() async {
     if (defaultTargetPlatform == TargetPlatform.iOS) {}
 
     if (defaultTargetPlatform == TargetPlatform.android) {
-      platform.invokeMethod('startUnityActivity');
+      List<String> cardsBase64Image = List<String>();
+      for (var card in cards) {
+        if (card.imageUrl != null) {
+          cardsBase64Image.add(await card.toBase64());
+        }
+      }
+      platform.invokeMethod('startUnityActivity', cardsBase64Image);
     }
   }
 
