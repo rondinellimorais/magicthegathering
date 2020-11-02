@@ -35,7 +35,7 @@
   </tr>
 </table>
 
-## 1 - Project 3D
+## 1 - Projeto 3D
 
 1. Baixar o Unity no computador ✅
 2. Configurar o Vuforia ✅
@@ -85,6 +85,10 @@
 4. README
 5. Enviar tudo para o git 🍺
 6. 👊 🔥 🎉
+
+## Resultado final 📱 📷
+
+Adicionar vídeo aqui...
 
 ## links
 
