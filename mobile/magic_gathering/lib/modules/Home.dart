@@ -52,17 +52,17 @@ class HomeState extends State<Home> {
   }
 
   Future<void> cardsBase64Image() async {
-    /**
-     * OBS: Vou limitar a lista a 4 itens pois esses base64
-     * execede o limite de informações que podem ser enviadas
-     * via putExtra na intent
-     */
-    var filteredCards = cards
-        .where((element) => element.imageUrl != null)
-        .toList()
-        .sublist(1, 5);
+    var filteredCards =
+        cards.where((element) => element.imageUrl != null).toList();
 
     inViewPortBase64 = await filteredCards[currentIndex].toBase64();
+
+    /**
+     * OBS: Vou limitar a lista a 4 itens pois esses base64
+     * excede o limite de informações que podem ser enviadas
+     * via putExtra na intent
+     */
+    filteredCards = filteredCards.sublist(1, 5);
 
     for (var card in filteredCards) {
       _cardsBase64Image.add(await card.toBase64());
