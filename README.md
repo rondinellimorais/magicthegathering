@@ -35,7 +35,7 @@
   </tr>
 </table>
 
-## 1 - Project 3D
+## 1 - Projeto 3D
 
 1. Baixar o Unity no computador ✅
 2. Configurar o Vuforia ✅
