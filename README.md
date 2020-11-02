@@ -35,53 +35,47 @@
   </tr>
 </table>
 
-- Flutter
-- Unity
-- Vuforia
-  - ARCore
-  - ARKit
-
 ## 1 - Project 3D
 
 1. Baixar o Unity no computador ✅
 2. Configurar o Vuforia ✅
-  - Criar a licença
-  - Configurar os targets
-  - Exportar package database
-  - Configurar a câmera
+    - Criar a licença
+    - Configurar os targets
+    - Exportar package database
+    - Configurar a câmera
 3. Fazer o modelo 3D renderizar em uma superficie desejada ✅
 4. Magic Card
-  - Each Magic card, approximately 63 × 88 mm in size (2.5 by 3.5 inches).
-  - Ajustar o tamanho do cartão ✅
-  - Frente e verso da carta magica ✅
+    - Each Magic card, approximately 63 × 88 mm in size (2.5 by 3.5 inches).
+    - Ajustar o tamanho do cartão ✅
+    - Frente e verso da carta magica ✅
 5. Exportar projeto ✅
 6. Configura-lo como lib para o Flutter ✅
 7. Android ✅
-  - Configurar o projeto do Unity para receber parâmetros ✅
-    + Testar o recebimento de um texto e printa-lo na tela
-    + Configurar o parâmetro imagem para o Material
-    + Rebecer imagem por parâmetro e substituir no material
-  - Criar Bridge Flutter e Kotlin ✅
+    - Configurar o projeto do Unity para receber parâmetros ✅
+      + Testar o recebimento de um texto e printa-lo na tela
+      + Configurar o parâmetro imagem para o Material
+      + Rebecer imagem por parâmetro e substituir no material
+    - Criar Bridge Flutter e Kotlin ✅
 8. iOS ❌
-  - Configurar o projeto do Unity para receber parâmetros ❌
-    + Testar o recebimento de um texto e printa-lo na tela
-    + Configurar o parâmetro imagem para o Material
-    + Rebecer imagem por parâmetro e substituir no material
-  - Criar Bridge Flutter e Swift ❌
+    - Configurar o projeto do Unity para receber parâmetros ❌
+      + Testar o recebimento de um texto e printa-lo na tela
+      + Configurar o parâmetro imagem para o Material
+      + Rebecer imagem por parâmetro e substituir no material
+    - Criar Bridge Flutter e Swift ❌
 9. Possibilidade de poder trocar de imagem na cena do Unity ✅
-  - Criação de uma HUD ✅
+    - Criação de uma HUD
 10. Bugs ✅
-  - Corrigir iliminação ✅
-  - Corrigir textura Magic Card Back ✅
-  - Corrgir parametros putExtra ✅
-  - Sair da cena ✅
+    - Corrigir iliminação
+    - Corrigir textura Magic Card Back
+    - Corrgir parametros putExtra
+    - Sair da cena
 
 ## 2 - Criar projeto flutter
 
 1. Integrar a lib do projeto de realidade aumentada ✅
 2. Start da cena do Unity informando os paramâmetros ✅
-  - cardBase64Image
-  - cardsBase64Image
+    - cardBase64Image
+    - cardsBase64Image
 
 ### 2.2 - Se tudo ocorrer bem até aqui
 
