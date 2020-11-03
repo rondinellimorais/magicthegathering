@@ -49,12 +49,12 @@
   </tr>
 </table>
 
-## Planejamento do projeto
+## Planejamento do projeto 🔨 ⚙️
 
-Essa é uma sessão que mostra todos os passos que tive que executar para tornar o projeto possível.
+Essa é uma sessão que mostra todos o passo a passo que tive que executar para tornar o projeto possível.
 
 <details>
-  <summary>Passo a passo do projeto</summary>
+  <summary>Fases de concepção do projeto</summary>
 
   ## 1 - Projeto 3D
 
