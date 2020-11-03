@@ -49,7 +49,12 @@
   </tr>
 </table>
 
+## Passos a passo do projeto
+
 <details>
+  
+  Essa é uma sessão que mostra todos os passos que tive que executar para tornar o projeto possível.
+  
   <summary>Steps do processo criativo</summary>
 
   ## 1 - Projeto 3D
