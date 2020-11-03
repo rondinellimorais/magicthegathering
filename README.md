@@ -106,6 +106,11 @@
 
 [![Magic the Gathering Android](http://img.youtube.com/vi/mN44jWAkpvo/0.jpg)](https://www.youtube.com/embed/mN44jWAkpvo "Magic the Gathering Android")
 
+## QR Codes
+
+![Target front](resources/target_front.jpg)
+![Target back](resources/target_back.jpg)
+
 ## links
 
 - https://everisbrasil.medium.com/como-integrar-realidade-aumentada-a-aplicativos-android-nativos-gustavo-giardi-47d0bdfc66bd
