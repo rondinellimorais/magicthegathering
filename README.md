@@ -22,7 +22,7 @@
     <td style="padding-left: 25px">
       <a href="https://developer.vuforia.com/">
       <img alt="Vuforia"
-        src="https://www.techprior.com/wp-content/uploads/2017/12/Vuforia-Logo-OLx2a896.png" height="50">
+        src="https://cms-assets.tutsplus.com/uploads/users/34/posts/27693/preview_image/vuforia.jpg" height="150">
       </a>
     </td>
     <td>
