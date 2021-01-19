@@ -86,10 +86,10 @@ Essa é uma sessão que mostra todos o passo a passo que tive que executar para 
   9. Possibilidade de poder trocar de imagem na cena do Unity ✅
       - Criação de uma HUD
   10. Bugs ✅
-      - Corrigir iliminação
-      - Corrigir textura Magic Card Back
-      - Corrgir parametros putExtra
-      - Sair da cena
+      - Corrigir iliminação ✅
+      - Corrigir textura Magic Card Back ✅
+      - Corrgir parametros putExtra ✅
+      - Sair da cena ✅
 
   ## 2 - Criar projeto flutter
 
