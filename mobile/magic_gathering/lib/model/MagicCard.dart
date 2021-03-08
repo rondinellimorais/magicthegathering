@@ -19,7 +19,7 @@ class MagicCard {
 
   factory MagicCard.fromJson(Map<String, dynamic> json) {
     return MagicCard(
-      id: json['multiverseid'],
+      id: int.parse(json['multiverseid']),
       name: json['name'],
       imageUrl: json['imageUrl'],
     );
